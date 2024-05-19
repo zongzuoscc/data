@@ -1,12 +1,10 @@
 #include <iostream>
 using namespace std;
-
 // 定义链表节点结构
 typedef struct node {
     int data;          // 存储节点的数据
     node* next; // 指向下一个节点的指针
 } NODE;
-
 // 反转链表函数
 NODE* reverseList(NODE* head) {
     NODE* prev = NULL;  // 前一个节点指针，初始为NULL
@@ -19,7 +17,6 @@ NODE* reverseList(NODE* head) {
     }
     return prev; // 返回反转后的新链表头节点
 }
-
 // 找到链表的中间节点
 NODE* findMiddle(NODE* head) {
     NODE* slow = head; // 慢指针
@@ -30,33 +27,26 @@ NODE* findMiddle(NODE* head) {
     }
     return slow; // 返回慢指针所在的节点，即为中间节点
 }
-
 // 重新排列链表
 void rearrangeList(NODE* head) {
     if (head == NULL || head->next == NULL) return;
-
     // 找到链表中间节点并拆分链表
     NODE* middle = findMiddle(head);
     NODE* secondHalf = middle->next;
     middle->next = NULL; // 切断链表
-
     // 反转后半部分链表
     secondHalf = reverseList(secondHalf);
-
     // 合并前后两部分链表
     NODE* firstHalf = head;
     while (secondHalf != NULL) {
         NODE* temp1 = firstHalf->next; // 保存前半部分的下一个节点
         NODE* temp2 = secondHalf->next; // 保存后半部分的下一个节点
-
         firstHalf->next = secondHalf; // 前半部分当前节点指向后半部分当前节点
         secondHalf->next = temp1;     // 后半部分当前节点指向前半部分的下一个节点
-
         firstHalf = temp1;  // 更新前半部分当前节点
         secondHalf = temp2; // 更新后半部分当前节点
     }
 }
-
 // 创建新节点
 NODE* createNode(int data) {
     NODE* newNode = new NODE; // 分配新节点内存
@@ -64,7 +54,6 @@ NODE* createNode(int data) {
     newNode->next = NULL;  // 初始化指向下一个节点的指针
     return newNode;           // 返回新创建的节点
 }
-
 // 输出链表
 void printList(NODE* head) {
     NODE* temp = head; // 临时指针，用于遍历链表
@@ -74,7 +63,6 @@ void printList(NODE* head) {
     }
     cout << "NULL" << endl; // 表示链表结束
 }
-
 int main() {
     int n;
     a:cout << "请输入链表节点数: ";
@@ -83,10 +71,8 @@ int main() {
         cout << "链表节点数必须大于0。" << endl;
         goto a;
     }
-
     NODE* head = NULL; // 链表头指针
     NODE* tail = NULL; // 链表尾指针
-
     cout << "请输入链表节点值: ";
     for (int i = 0; i < n; i++) {  //尾插法创建链表
         int data;
@@ -101,14 +87,10 @@ int main() {
             tail = newNode;       // 更新链表尾
         }
     }
-
     cout << "原始链表:"<<endl;
     printList(head);
-
     rearrangeList(head);
-
     cout << "重新排列后的链表:"<<endl;
     printList(head);
-
     return 0;
 }
