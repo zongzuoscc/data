@@ -4,7 +4,7 @@ using namespace std;
 // 定义链表节点结构
 typedef struct node {
     int data;          // 存储节点的数据
-    struct node* next; // 指向下一个节点的指针
+    node* next; // 指向下一个节点的指针
 } NODE;
 
 // 反转链表函数
@@ -88,25 +88,26 @@ int main() {
     NODE* tail = NULL; // 链表尾指针
 
     cout << "请输入链表节点值: ";
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i < n; i++) {  //尾插法创建链表
         int data;
         cin >> data;
         NODE* newNode = createNode(data);
         if (head == NULL) {
             head = newNode; // 初始化链表头
             tail = newNode; // 初始化链表尾
-        } else {
+        } 
+        else {
             tail->next = newNode; // 链表尾指向新节点
             tail = newNode;       // 更新链表尾
         }
     }
 
-    cout << "原始链表:\n";
+    cout << "原始链表:"<<endl;
     printList(head);
 
     rearrangeList(head);
 
-    cout << "重新排列后的链表:\n";
+    cout << "重新排列后的链表:"<<endl;
     printList(head);
 
     return 0;
