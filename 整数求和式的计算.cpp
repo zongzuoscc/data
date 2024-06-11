@@ -13,9 +13,27 @@ int main()
     size_t equal=expression.find('=');//用来存储find函数返回的位置  这里是存储位置的
     string n=expression.substr(0,add);//substr这个函数 前一个参数表示的是提取的开始位置
     string m=expression.substr(add+1,equal-1-add);// 第二个参数 不是结束的位置 而是提取字符的长度
+    //c++的substr函数和别的语言不太一样
     int a=stoi(n);//stoi是c++中的一个函数 可以将字符串转化为整型
     int b=stoi(m);
     int result = a+b;
     cout<<expression<<result<<endl;
     return 0;
 }
+
+
+//下面是一段更为简单的代码  但是 如果说遇到一些宇宙级难题 A+B 就无法accepted了
+
+/*
+#include <iostream>
+using namespace std;
+int main()
+{
+    int a,b;
+    char c,d;
+    cin>>a>>c>>b>>d;
+    int result=a+b;
+    cout<<a<<c<<b<<d<<result<<endl;
+    return 0;
+}
+*/

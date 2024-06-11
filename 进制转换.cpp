@@ -11,6 +11,8 @@ string turn(int n,int r)
 {
     string result="";
     bool negative=false;
+    //这里是判断数字是不是负数，因为符号并不需要操作 ，所以只需要先把负数变成正数，
+    //然后输出的时候单独输出一个负号就好了
     if(n<0)
     {
         negative=true;

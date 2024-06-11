@@ -23,7 +23,7 @@ int main() {
 
     int i = 0, j = 0;
     vector<int> result;
-    while (i < n && j < n) 
+    while (i < n && j < n) //双指针，将较小的部分添加到vector容器中
     {
         if (a[i] <= b[j]) 
         {
@@ -35,16 +35,16 @@ int main() {
         }
     }
 
-    while (i < n) 
+    while (i < n) //如果有剩余，将剩下的部分直接按顺序添加到vector容器中
     {
         result.push_back(a[i++]);
     }
-    while (j < n) 
+    while (j < n) //同理
     {
         result.push_back(b[j++]);
     }
 
-    for (int k = 0; k < 2 * n; k++) 
+    for (int k = 0; k < 2 * n; k++) //遍历输出
     {
         cout << result[k] << " ";
     }
