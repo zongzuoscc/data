@@ -10,33 +10,46 @@
 // 2 2 A->C
 // 3 1 B->C
 //递归问题 大家都知道思路，终点是代码转换
+// #include <iostream>
+// using namespace std;
+
+// void moveDisks(int n, char A, char C, char B, int &step) 
+// {
+//     if (n == 1) 
+//     {
+//         // 如果只有一个盘子，直接从 A 移动到 C
+//         cout << step++ << " " << n << " " << A << "->" << C << endl;
+//         return;
+//     }
+
+//     // 将 n-1 个盘子从 A 移动到 B，使用 C 作为辅助
+//     moveDisks(n - 1, A, B, C, step);
+
+//     // 将第 n 个盘子从 A 移动到 C
+//     cout << step++ << " " << n << " " << A << "->" << C << endl;
+
+//     // 将 n-1 个盘子从 B 移动到 C，使用 A 作为辅助
+//     moveDisks(n - 1, B, C, A, step);
+// }
+
+// int main() 
+// {
+//     int n;
+//     cin >> n;
+//     int step = 1;
+//     moveDisks(n, 'A', 'C', 'B', step);
+//     return 0;
+// }
 #include <iostream>
 using namespace std;
-
-void moveDisks(int n, char A, char C, char B, int &step) 
+void movedisk()
 {
-    if (n == 1) 
-    {
-        // 如果只有一个盘子，直接从 A 移动到 C
-        cout << step++ << " " << n << " " << A << "->" << C << endl;
-        return;
-    }
 
-    // 将 n-1 个盘子从 A 移动到 B，使用 C 作为辅助
-    moveDisks(n - 1, A, B, C, step);
-
-    // 将第 n 个盘子从 A 移动到 C
-    cout << step++ << " " << n << " " << A << "->" << C << endl;
-
-    // 将 n-1 个盘子从 B 移动到 C，使用 A 作为辅助
-    moveDisks(n - 1, B, C, A, step);
 }
-
-int main() 
+int main()
 {
-    int n;
-    cin >> n;
-    int step = 1;
-    moveDisks(n, 'A', 'C', 'B', step);
-    return 0;
+    int n;//移动的圆盘个数
+    cin>>n;
+    int step=1;//记录移动的步数
+    
 }
