@@ -62,3 +62,41 @@ int main()
     cout << 0 << endl;
     return 0;
 }
+/*
+
+由于我们没有学kmp算法，所以说在oj上面，采用暴力算法也可以ac，那么我们在编写的时候就直接用暴力算法就好了，方便理解和记忆
+
+#include <iostream>
+#include <cstring>
+using namespace std;
+const int N=100010;
+const int M=10010;
+char s[N];//目标串
+char p[M];//模式串
+int main()
+{
+    cin>>s;
+    cin>>p;
+    int m=strlen(s);
+    int n=strlen(p);
+    for (int i = 0; i <= m - n; i++) 
+    { // 遍历目标串
+        bool found = true;
+        for (int j = 0; j < n; j++) 
+        { // 遍历模式串
+            if (s[i + j] != p[j]) 
+            { // 如果有不匹配的字符
+                found = false;
+                break;
+            }
+        }
+        if (found) 
+        { // 如果找到匹配
+            cout << i + 1 << endl; // 输出位置（从1开始）
+            return 0;
+        }
+    }
+    cout << 0 << endl; // 没有找到匹配，输出0
+    return 0;
+}
+*/
