@@ -5,6 +5,9 @@
 // 每行分别是城市的代号到其分出的卫星城的代号和它们间的路程。
 // 代号用若干个字母表示，直连路程最大为100。最后一行是某卫星城的代号。
 //根据最后一行的卫星城代号，求该卫星城到首都的路程。
+
+// 这个题有点类似树，但又不是树因为一层的一个卫星城节点会生成两个在下一层的卫星城，但是每一层的各个城之间又是相连的
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -46,12 +49,12 @@ int main() {
     int total_distance = 0;
     while (true) 
     {
-        int index = findCityIndex(cities, target);
-        if (index == -1) {
+        int index = findCityIndex(cities, target);//相当于从target节点往回找，直到找到首都
+        if (index == -1) {//直到在cities中找不到，那么退出循环
             break;
         }
         total_distance += cities[index].distance;
-        target = cities[index].parent;
+        target = cities[index].parent;//令目标城市变为与target相连的节点，然后循环
     }
 
     cout << total_distance << endl;
