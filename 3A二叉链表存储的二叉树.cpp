@@ -86,3 +86,77 @@ int main()
     cout << endl;
     return 0;
 }
+
+// 以下为使用数组来存储树并实现先序中序输出的代码
+// #include <iostream>
+// #include <cstring>
+// using namespace std;
+
+// const int MAXN = 100;
+// char tree[MAXN]; // 用于存储二叉树的字符数组
+// bool exists[MAXN]; // 用于标记节点是否存在
+
+// // 全局变量用于记录当前处理到的字符位置
+// int idx = 0;
+
+// // 创建一棵树，返回树的根节点在数组中的索引
+// int createTreeArray(const char* S, int len, int currentIdx) {
+//     if (idx >= len || S[idx] == '\0') return -1;
+    
+//     tree[currentIdx] = S[idx++];
+//     exists[currentIdx] = true;
+    
+//     if (idx < len && S[idx] != ' ') {
+//         createTreeArray(S, len, 2 * currentIdx + 1);
+//     } else {
+//         idx++;
+//     }
+    
+//     if (idx < len && S[idx] != ' ') {
+//         createTreeArray(S, len, 2 * currentIdx + 2);
+//     } else {
+//         idx++;
+//     }
+    
+//     return currentIdx;
+// }
+
+// // 先序遍历
+// void preorderTraversalArray(int currentIdx) {
+//     if (!exists[currentIdx]) return;
+//     cout << tree[currentIdx] << " ";
+//     preorderTraversalArray(2 * currentIdx + 1);
+//     preorderTraversalArray(2 * currentIdx + 2);
+// }
+
+// // 中序遍历
+// void inorderTraversalArray(int currentIdx) {
+//     if (!exists[currentIdx]) return;
+//     inorderTraversalArray(2 * currentIdx + 1);
+//     cout << tree[currentIdx] << " ";
+//     inorderTraversalArray(2 * currentIdx + 2);
+// }
+
+// // 后序遍历
+// void postorderTraversalArray(int currentIdx) {
+//     if (!exists[currentIdx]) return;
+//     postorderTraversalArray(2 * currentIdx + 1);
+//     postorderTraversalArray(2 * currentIdx + 2);
+//     cout << tree[currentIdx] << " ";
+// }
+
+// int main() {
+//     char S[101];
+//     cin.getline(S, 101);
+//     memset(exists, 0, sizeof(exists)); // 初始化节点存在标记为false
+//     createTreeArray(S, strlen(S), 0);
+    
+//     preorderTraversalArray(0);
+//     cout << endl;
+//     inorderTraversalArray(0);
+//     cout << endl;
+//     inorderTraversalArray(0);
+//     cout << endl;
+    
+//     return 0;
+// }
