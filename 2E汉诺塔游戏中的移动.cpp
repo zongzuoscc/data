@@ -42,14 +42,22 @@
 // }
 #include <iostream>
 using namespace std;
-void movedisk()
+int step=1;//记录移动的步数
+void movedisk(int n,char A,char C,char B)
 {
-
+    if(n==1)
+    {
+        cout<<step++<<" "<<n<<" "<<A<<"->"<<C<<endl;
+        return;
+    }
+    movedisk(n-1,A,B,C);
+    cout<<step++<<" "<<n<<" "<<A<<"->"<<C<<endl;
+    movedisk(n-1,B,C,A);
 }
 int main()
 {
     int n;//移动的圆盘个数
     cin>>n;
-    int step=1;//记录移动的步数
-    
+    movedisk(n,'A','C','B');
+    return 0;
 }

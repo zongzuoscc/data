@@ -17,7 +17,7 @@ using namespace std;
 const int MAX_NODES = 26; // 最大节点数，26个大写字母
 vector<int> tree[MAX_NODES]; // 存储树的邻接表
 bool hasParent[MAX_NODES]; // 标记节点是否有父节点
-bool visited[MAX_NODES]; // 标记节点是否访问过
+// bool visited[MAX_NODES]; // 标记节点是否访问过
 
 void postorderTraversal(int node) //输出后根遍历
 {
@@ -41,7 +41,7 @@ void preorderTraversal(int node) //输出先根遍历
 int main() 
 {
     memset(hasParent, false, sizeof(hasParent));
-    memset(visited, false, sizeof(visited));
+    // memset(visited, false, sizeof(visited));
     
     char parent, child;
     while (cin >> parent >> child) 
