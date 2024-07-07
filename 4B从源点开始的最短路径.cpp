@@ -24,7 +24,7 @@ int dijkstra(int target)
         int t=-1;//表示还没有确定
         for(int j=1;j<=n;j++)
         {
-            if(!st[j]&&(t==-1||dist[t]>dist[j]))//如果说当前这个点还没有确定最短路并且t=-1或当前这个t不是最短的的话 
+            if(!st[j]&&(t==-1||dist[j]<dist[t]))//如果说当前这个点还没有确定最短路并且t=-1或当前这个t不是最短的的话 
             {
                 t=j;//那么就把t赋值成j
             }
@@ -36,7 +36,6 @@ int dijkstra(int target)
         {
             dist[j]=min(dist[j],dist[t]+g[t][j]);//从用1到t的距离+t到j的距离 来更新从1到j这条边
         }
-                // st[t]=true;//把t加到集合里面去
 
     }
     if(dist[target]==0x3f3f3f3f)//如果从1到n是正无穷 说明是不连通的
