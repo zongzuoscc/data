@@ -20,59 +20,66 @@
 using namespace std;
   
 const int maxn = 40;
-int pos1[maxn], pos2[maxn];
-int a1[maxn], a2[maxn];
-int L[maxn], size[maxn], R[maxn];
-bool book = false;
+int pos1[maxn];//记录先序序列中节点所在的位置
+int pos2[maxn];//记录后序序列中节点所在的位置
+int a1[maxn];//记录输入的先序序列
+int a2[maxn];//记录输入的后序序列
+int L[maxn];//存储节点i的左子节点
+int R[maxn];//存储节点i的右子节点
+bool notonly = false;
   
-void dfs(int l, int r) {
+void dfs(int l, int r) 
+{
     if (l >= r)
         return;
-    int root = a1[l];
-    int lroot = a1[l + 1];
-    int rroot = a2[pos2[root] - 1];
-    if (lroot == rroot) {
-        R[root] = rroot;
-        book = true;
-        dfs(l + 1, r);
+    int root = a1[l];//根节点赋值为先序序列的第一个节点
+    int lroot = a1[l + 1];//左子树的根节点
+    int rroot = a2[pos2[root] - 1];//右子树的根节点
+    if (lroot == rroot) {//若左右子树根节点相同
+        R[root] = rroot;//令根节点的右子树的根节点为这个重合的节点
+        notonly = true;//把树标记为不唯一
+        dfs(l + 1, r);//递归处理
         return;
     }
-    int lsize = pos1[rroot] - pos1[lroot];
+    int lsize = pos1[rroot] - pos1[lroot];//左子树的大小
     L[root] = lroot;
     R[root] = rroot;
-    dfs(l + 1, l + lsize);
-    dfs(l + lsize + 1, r);
+    dfs(l + 1, l + lsize);//递归处理左子树
+    dfs(l + lsize + 1, r);//递归处理右子树
 }
   
-void dfs3(int now) {
+void inorder(int now) 
+{
     if (L[now])
-        dfs3(L[now]);
+        inorder(L[now]);
     cout << now << " ";
     if (R[now])
-        dfs3(R[now]);
+        inorder(R[now]);
     if (now == a1[1])
         cout << endl;
 }
   
-int main() {
+int main() 
+{
     int n;
     cin >> n;
-    for (int i = 1; i <= n; i++) {
-        size[i] = 1;
+    for (int i = 1; i <= n; i++) 
+    {
         cin >> a1[i];
         pos1[a1[i]] = i;
     }
-    for (int i = 1; i <= n; i++) {
+    for (int i = 1; i <= n; i++) 
+    {
         cin >> a2[i];
         pos2[a2[i]] = i;
     }
   
     dfs(1, n);
-    if (book)
+    if (notonly)
         cout << "No" << endl;
     else
         cout << "Yes" << endl;
-    dfs3(a1[1]);
-  
+    inorder(a1[1]);
+
     return 0;
 }
