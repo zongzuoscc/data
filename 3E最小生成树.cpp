@@ -35,22 +35,20 @@ int prim() {
     {
         int t = -1;
         // 找到距离集合最近的未被选中的点
-        for (int j = 0; j < n; j++) {
+        for (int j = 0; j < n; j++) 
+        {
             if (!st[j] && (t == -1 || dist[j] < dist[t]))//这个点没有被找过同时  
             {
                 t = j;
             }
         }
-
         // 如果 dist[t] 为 INF，说明图是不连通的
         if (dist[t] == INF) {
             return INF;
         }
-
         // 将点 t 加入生成树集合
         st[t] = true;
         res += dist[t];
-
         // 更新 dist 数组
         for (int j = 0; j < n; j++) {
             if (!st[j] && g[t][j] < dist[j]) {
@@ -58,7 +56,6 @@ int prim() {
             }
         }
     }
-
     return res;
 }
 
